@@ -23,7 +23,19 @@
                     <asp:BoundField DataField="GRADE" HeaderText="Grade" SortExpression="GRADE" />
                     <asp:BoundField DataField="ID_PROJEKTANTA" HeaderText="Projektant" SortExpression="ID_PROJEKTANTA" />
                     <asp:BoundField DataField="ZDOLNOSC" HeaderText="Zdolność" SortExpression="ZDOLNOSC" />
-                    <asp:BoundField DataField="GRAFIKA" HeaderText="Grafika" SortExpression="GRAFIKA" />
+                    <asp:TemplateField HeaderText="Grafika" SortExpression="GRAFIKA">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("GRAFIKA") %>'></asp:TextBox>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("GRAFIKA") %>'></asp:TextBox>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Image ID="Image1" runat="server" ImageUrl='<%# Bind("GRAFIKA") %>' />
+                            <br />
+
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField ShowHeader="False">
                         <EditItemTemplate>
                             <asp:Button ID="Button1" runat="server" CausesValidation="True" CommandName="Update" Text="Zapisz" CssClass="btn btn-primary"/>
