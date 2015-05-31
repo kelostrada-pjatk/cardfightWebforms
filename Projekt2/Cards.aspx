@@ -15,25 +15,113 @@
         <div class="col-lg-6">
             <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataKeyNames="ID_KARTY" DataSourceID="SqlDataSource2" CssClass="table table-striped table-bordered">
                 <Fields>
-                    <asp:BoundField DataField="NUMER_KARTY" HeaderText="Numer" SortExpression="NUMER_KARTY" />
-                    <asp:BoundField DataField="SYMBOL_EDYCJI" HeaderText="Edycja" SortExpression="SYMBOL_EDYCJI" />
-                    <asp:BoundField DataField="NAZWA_KARTY" HeaderText="Nazwa" SortExpression="NAZWA_KARTY" />
-                    <asp:BoundField DataField="SILA" HeaderText="Siła" SortExpression="SILA" />
-                    <asp:BoundField DataField="TARCZA" HeaderText="Tarcza" SortExpression="TARCZA" />
-                    <asp:BoundField DataField="GRADE" HeaderText="Grade" SortExpression="GRADE" />
-                    <asp:BoundField DataField="ID_PROJEKTANTA" HeaderText="Projektant" SortExpression="ID_PROJEKTANTA" />
-                    <asp:BoundField DataField="ZDOLNOSC" HeaderText="Zdolność" SortExpression="ZDOLNOSC" />
-                    <asp:TemplateField HeaderText="Grafika" SortExpression="GRAFIKA">
+                    <asp:TemplateField HeaderText="Numer" SortExpression="NUMER_KARTY">
                         <EditItemTemplate>
-                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("GRAFIKA") %>'></asp:TextBox>
+                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("NUMER_KARTY") %>' CssClass="form-control"></asp:TextBox>
                         </EditItemTemplate>
                         <InsertItemTemplate>
-                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("GRAFIKA") %>'></asp:TextBox>
+                            <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("NUMER_KARTY") %>' CssClass="form-control"></asp:TextBox>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("NUMER_KARTY") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Edycja" SortExpression="SYMBOL_EDYCJI">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("SYMBOL_EDYCJI") %>' CssClass="form-control"></asp:TextBox>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("SYMBOL_EDYCJI") %>' CssClass="form-control"></asp:TextBox>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("SYMBOL_EDYCJI") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Nazwa" SortExpression="NAZWA_KARTY">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("NAZWA_KARTY") %>' CssClass="form-control"></asp:TextBox>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("NAZWA_KARTY") %>' CssClass="form-control"></asp:TextBox>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("NAZWA_KARTY") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Siła" SortExpression="SILA">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("SILA") %>' CssClass="form-control"></asp:TextBox>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("SILA") %>' CssClass="form-control"></asp:TextBox>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("SILA") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Tarcza" SortExpression="TARCZA">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("TARCZA") %>' CssClass="form-control"></asp:TextBox>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("TARCZA") %>' CssClass="form-control"></asp:TextBox>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label6" runat="server" Text='<%# Bind("TARCZA") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Grade" SortExpression="GRADE">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("GRADE") %>' CssClass="form-control"></asp:TextBox>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("GRADE") %>' CssClass="form-control"></asp:TextBox>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label7" runat="server" Text='<%# Bind("GRADE") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Projektant" SortExpression="ID_PROJEKTANTA">
+                        <EditItemTemplate>
+                            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource4" DataTextField="LOGIN" DataValueField="ID_UZYTKOWNIKA" SelectedValue='<%# Bind("ID_PROJEKTANTA") %>' CssClass="form-control">
+                            </asp:DropDownList>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("ID_PROJEKTANTA") %>' CssClass="form-control"></asp:TextBox>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("ID_PROJEKTANTA") %>' style="display: none;"></asp:Label>
+                            <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource3" >
+                                <ItemTemplate><%#Eval("LOGIN")%></ItemTemplate>
+                            </asp:Repeater>
+                            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:s11027ConnectionString %>" SelectCommand="SELECT [LOGIN] FROM [UZYTKOWNIK] WHERE ([ID_UZYTKOWNIKA] = @ID_UZYTKOWNIKA)">
+                                <SelectParameters>
+                                    <asp:ControlParameter ControlID="Label1" Name="ID_UZYTKOWNIKA" PropertyName="Text" Type="Int32" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Zdolność" SortExpression="ZDOLNOSC">
+                        <EditItemTemplate>
+                            <textarea runat="server" id="TextArea1" name="S1" rows="8" class="form-control"><%# Eval("ZDOLNOSC") %></textarea>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <textarea runat="server" id="TextArea1" name="S1" rows="8" class="form-control"><%# Eval("ZDOLNOSC") %></textarea>
+                        </InsertItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label8" runat="server" Text='<%# Bind("ZDOLNOSC") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Grafika" SortExpression="GRAFIKA">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("GRAFIKA") %>' CssClass="form-control"></asp:TextBox>
+                        </EditItemTemplate>
+                        <InsertItemTemplate>
+                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("GRAFIKA") %>' CssClass="form-control"></asp:TextBox>
                         </InsertItemTemplate>
                         <ItemTemplate>
                             <asp:Image ID="Image1" runat="server" ImageUrl='<%# Bind("GRAFIKA") %>' />
                             <br />
-
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ShowHeader="False">
@@ -107,4 +195,6 @@
             <asp:Parameter Name="original_GRAFIKA" Type="String" />
         </UpdateParameters>
     </asp:SqlDataSource>
+    
+    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:s11027ConnectionString %>" SelectCommand="SELECT ID_UZYTKOWNIKA, LOGIN FROM UZYTKOWNIK UNION SELECT NULL AS ID_UZYTKOWNIKA, '--brak--' AS LOGIN"></asp:SqlDataSource>
 </asp:Content>
