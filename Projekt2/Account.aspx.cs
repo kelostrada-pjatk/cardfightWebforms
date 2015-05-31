@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -28,25 +31,39 @@ namespace Projekt2
                 Master.ErrorMessage = "Hasła muszą być takie same.";
                 return;
             }
-            var tableAdapter = new uzytkownik_zmien_hasloTableAdapter();
-            var result = tableAdapter.GetData(Master.UserId.Value, UserPass.Text, UserPassConfirm.Text);
 
-            if (result.Count > 0)
+            var mySetting = ConfigurationManager.ConnectionStrings["s11027ConnectionString"];
+            if (mySetting == null || string.IsNullOrEmpty(mySetting.ConnectionString))
+                throw new Exception("Fatal error: missing connecting string in web.config file");
+
+            using (var conn = new SqlConnection(mySetting.ConnectionString))
             {
-                var row = result.First();
-                if (row.WYNIK > 0)
+                conn.Open();
+                var cmd = new SqlCommand("uzytkownik_zmien_haslo", conn)
                 {
-                    Master.SuccessMessage = string.Format("Hasło zmienione poprawnie. Nowy hash hasła: {0}", row.HASH_HASLA);
-                }
-                else
+                    CommandType = CommandType.StoredProcedure
+                };
+
+                cmd.Parameters.Add(new SqlParameter("@id_uzytkownika", Master.UserId.Value));
+                cmd.Parameters.Add(new SqlParameter("@haslo", UserPass.Text));
+                cmd.Parameters.Add(new SqlParameter("@potwierdzenie_hasla", UserPassConfirm.Text));
+
+                using (var rdr = cmd.ExecuteReader())
                 {
-                    Master.ErrorMessage = "Nieznany błąd.";
+                    rdr.Read();
+
+                    if ((int)rdr["WYNIK"] > 0)
+                    {
+                        Master.SuccessMessage = string.Format("Hasło zmienione poprawnie. Nowy hash hasła: {0}", (string)rdr["HASH_HASLA"]);
+                    }
+                    else
+                    {
+                        Master.ErrorMessage = "Nieznany błąd.";
+                    }
+
                 }
             }
-            else
-            {
-                Master.ErrorMessage = "Nieznany błąd.";
-            }
+
         }
     }
 }
