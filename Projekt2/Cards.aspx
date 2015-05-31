@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Modyfikacja kart" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Cards.aspx.cs" Inherits="Projekt2.Cards" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
+        <h3>Edycja kart</h3>
         <div class="col-lg-6">
             <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="ID_KARTY" DataSourceID="SqlDataSource1" PageSize="15" CssClass="table table-striped table-bordered">
                 <Columns>
