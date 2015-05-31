@@ -92,7 +92,7 @@ namespace Projekt2
                 return;
             }
 
-            if (row.LICZBA_KART < ilosc)
+            if (row.LICZBA_KART <= ilosc)
             {
                 ktAdapter.Delete(idTalii, idKarty);
             }
@@ -109,9 +109,25 @@ namespace Projekt2
 
         protected void Button5_Click(object sender, EventArgs e)
         {
-            var idKarty = Int32.Parse(DropDownList2.SelectedValue);
+            var idKarty = int.Parse(DropDownList2.SelectedValue);
             var idTalii = (int)GridView1.SelectedValue;
             DodajKarte(idTalii, idKarty);
+        }
+
+        protected void Add_Click(object sender, EventArgs e)
+        {
+            var btn = (Button)sender;
+            var idKarty = int.Parse(btn.CommandArgument);
+            var idTalii = (int)GridView1.SelectedValue;
+            DodajKarte(idTalii, idKarty);
+        }
+
+        protected void Delete_Click(object sender, EventArgs e)
+        {
+            var btn = (Button)sender;
+            var idKarty = int.Parse(btn.CommandArgument);
+            var idTalii = (int)GridView1.SelectedValue;
+            UsunKarte(idTalii, idKarty);
         }
 
     }

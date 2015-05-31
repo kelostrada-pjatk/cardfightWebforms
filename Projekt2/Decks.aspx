@@ -93,6 +93,12 @@
                         <asp:BoundField DataField="LICZBA_KART" HeaderText="Liczba" SortExpression="LICZBA_KART" />
                         <asp:BoundField DataField="SYMBOL_EDYCJI" HeaderText="Edycja" SortExpression="SYMBOL_EDYCJI" />
                         <asp:BoundField DataField="NAZWA_KARTY" HeaderText="Nazwa karty" SortExpression="NAZWA_KARTY" />
+                        <asp:TemplateField HeaderText="Opcje" ShowHeader="False">
+                            <ItemTemplate>
+                                <asp:Button ID="Button6" runat="server" CausesValidation="false" CommandName="" CommandArgument='<%# Bind("ID_KARTY") %>' Text="+" OnClick="Add_Click" CssClass="btn btn-primary" />
+                                <asp:Button ID="Button7" runat="server" CausesValidation="false" CommandName="" CommandArgument='<%# Bind("ID_KARTY") %>' Text="-" OnClick="Delete_Click" CssClass="btn btn-primary" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </div>
