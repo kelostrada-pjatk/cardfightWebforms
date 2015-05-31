@@ -47,7 +47,7 @@ namespace Projekt2
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            Session["UserId"] = UserId;
 
             if (Session["SuccessMessage"] != null)
             {
